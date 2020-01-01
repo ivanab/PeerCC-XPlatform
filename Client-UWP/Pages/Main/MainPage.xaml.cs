@@ -60,6 +60,8 @@ namespace Client_UWP.Pages.Main
 
             DefaultSettings.AddDefaultAccount();
 
+            DefaultSettings.AddLocalServerAccount();
+
             _call = SetCall();
 
             DefaultSettings.AddDefaultIceServersList(_call);
