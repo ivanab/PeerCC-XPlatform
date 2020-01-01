@@ -34,6 +34,23 @@ namespace Client_UWP.Pages.Main
         private WebRtcAdapter.Call.Call _call;
         private Account _account;
 
+        public MainPage()
+        {
+            InitializeComponent();
+
+            DefaultSettings.AddDefaultAccount();
+
+            DefaultSettings.AddLocalServerAccount();
+
+            _call = SetCall();
+
+            DefaultSettings.AddDefaultIceServersList(_call);
+
+            InitEvents();
+
+            InitView();
+        }
+
         private Account SetAccount(string serviceUri)
         {
             IAccountProvider accountFactory =
@@ -52,23 +69,6 @@ namespace Client_UWP.Pages.Main
             CallProvider callProvider = (CallProvider)callFactory;
 
             return (WebRtcAdapter.Call.Call)callProvider.GetCall();
-        }
-
-        public MainPage()
-        {
-            InitializeComponent();
-
-            DefaultSettings.AddDefaultAccount();
-
-            DefaultSettings.AddLocalServerAccount();
-
-            _call = SetCall();
-
-            DefaultSettings.AddDefaultIceServersList(_call);
-
-            InitEvents();
-
-            InitView();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

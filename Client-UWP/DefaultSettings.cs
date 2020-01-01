@@ -3,7 +3,6 @@ using Client_UWP.Pages;
 using ClientCore.Call;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -14,6 +13,7 @@ namespace Client_UWP
     public static class DefaultSettings
     {
         private static LocalSettings _localSettings = new LocalSettings();
+        private static ObservableCollection<AccountModel> accountsList = new ObservableCollection<AccountModel>();
 
         private static string GetWirelessIpAddress()
         {
@@ -49,8 +49,6 @@ namespace Client_UWP
 
             _localSettings.SerializeAccountsList(accountsList);
         }
-
-        static ObservableCollection<AccountModel> accountsList = new ObservableCollection<AccountModel>();
 
         public static void AddDefaultAccount()
         {
