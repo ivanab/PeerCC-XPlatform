@@ -34,8 +34,9 @@ namespace Client_UWP.Pages.SettingsConnection
         {
             ObservableCollection<IceServerModel> list = _localSettings.DeserializeIceServersList();
 
-            foreach (IceServerModel ice in list)
-                _iceServersList.Add(ice);
+            if (list != null)
+                foreach (IceServerModel ice in list)
+                    _iceServersList.Add(ice);
 
             GoToMainPage.Click += (sender, args) => Frame.Navigate(typeof(MainPage));
 
